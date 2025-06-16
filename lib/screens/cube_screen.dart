@@ -1,3 +1,5 @@
+// cube_screen.dart
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/cube_sum_cubit.dart';
@@ -74,15 +76,18 @@ class _CubeScreenState extends State<CubeScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Результат: ${state.result}",
+                    // Показываем формулу (a + b)^3 = результат
+                    "(${state.a} + ${state.b})³ = ${state.result}",
                     style: const TextStyle(fontSize: 24),
                   ),
                   const SizedBox(height: 16),
                   ElevatedButton(
                     onPressed: () {
+                      setState(() {
+                        _isAgreed = false;
+                      });
                       _aController.clear();
                       _bController.clear();
-                      _isAgreed = false;
                       context.read<CubeSumCubit>().reset();
                     },
                     child: const Text("Новый расчёт"),
