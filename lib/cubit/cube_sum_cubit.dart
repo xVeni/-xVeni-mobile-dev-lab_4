@@ -1,3 +1,5 @@
+// cube_sum_cubit.dart
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cube_sum_state.dart';
 
@@ -20,8 +22,9 @@ class CubeSumCubit extends Cubit<CubeSumState> {
       return;
     }
 
-    final result = (a + b) * (a + b) * (a + b); // (a + b)^3
-    emit(CubeSumResult(result));
+    final int sum = a + b;
+    final int result = sum * sum * sum; // (a + b)^3
+    emit(CubeSumResult(a: a, b: b, result: result));
   }
 
   // Сброс к начальному состоянию
